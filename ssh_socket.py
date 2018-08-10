@@ -27,6 +27,13 @@ EXAMPLES = """
 - debug # pub key complete, or starting/ending part use as much as comfortable to ensure the right one is found
     msg: "key found in socket {{ lookup('ssh_socket', '/run/user/{{ ansible_user_uid }}/*/ssh', keyname='....==') }}"
 
+- name: updating crontab to be able to use ssh-agent for connecting to remote hosts
+  cron:
+    name: "SSH_AUTH_SOCK"
+    env: yes
+    value: "{{ lookup('ssh_socket', '/run/user/{{ ansible_user_uid }}/*/ssh', keyname='....==') }}"
+    state: present
+
 """
 
 RETURN = """
