@@ -47,7 +47,9 @@ from ansible.errors import AnsibleError, AnsibleParserError
 from ansible.plugins.lookup import LookupBase
 
 import glob
-import paramiko
+try:    import paramiko
+except ImportError:
+    raise AnsibleError('python paramiko is required to validate ssh agent socket and/or key')
 import os
 from itertools import chain
 
