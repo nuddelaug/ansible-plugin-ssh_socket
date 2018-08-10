@@ -3,7 +3,7 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 DOCUMENTATION = """
-    lookup: SSH_socket
+        lookup: ssh_socket
         author: Michaela Lang <Michaela.Lang@ctbto.org>
         version_added: "2.3"
         short_description: looking up an active SSH_socket to be used
@@ -13,6 +13,9 @@ DOCUMENTATION = """
             _path:
                 description: start of path to search for ssh sockets (*/ssh)
                 required: True
+            _keyname:
+                description: ssh agents with multiple keys to ensure you'll find the right one
+                required: False
         notes:
             - there's no recursion happening on finding a socket called 'ssh' it's meant that the base follows EL7 specific implementation
 """
